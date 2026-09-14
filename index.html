@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fresh Start Finance | Educación Financiera y Opciones de Crédito</title>
+    <title>Fresh Start Finance | Educación Financiera</title>
     <style>
         :root {
             --primary: #0F2C59;
@@ -14,117 +14,110 @@
             --gray: #6C757D;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--light); color: var(--dark); font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; }
 
-        header { background-color: var(--primary); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
-        header .logo { font-size: 1.4rem; font-weight: bold; color: white; text-decoration: none; }
-        nav a { color: white; text-decoration: none; margin-left: 15px; font-size: 0.95rem; }
+        header { background-color: var(--primary); color: white; padding: 1rem 5%; text-align: center; }
+        header .logo { font-size: 1.4rem; font-weight: bold; }
+        nav a { color: white; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
 
         .hero { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 3rem 5%; text-align: center; }
         .hero h1 { font-size: 2rem; margin-bottom: 1rem; }
-        .hero p { max-width: 600px; margin: 0 auto 1.5rem; font-size: 1.05rem; opacity: 0.9; }
-        .btn-cta { background-color: var(--accent); color: white; padding: 12px 24px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
-        .btn-cta:hover { opacity: 0.9; }
+        .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; }
 
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 5%; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
         
-        .section-title { text-align: center; color: var(--primary); margin-bottom: 1.5rem; }
-
-        /* Quiz Styling */
-        .quiz-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        /* QUIZ CONTAINER */
+        .quiz-card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .quiz-step { display: none; }
         .quiz-step.active { display: block; }
-        .options-grid { display: grid; gap: 10px; margin: 1.5rem 0; }
-        .option-btn { border: 2px solid var(--primary); background: white; color: var(--primary); padding: 12px; border-radius: 5px; cursor: pointer; font-weight: 600; text-align: left; }
-        .option-btn:hover { background-color: var(--primary); color: white; }
-        
+
+        .options-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 1rem; }
+        .option-btn { background: var(--light); border: 2px solid var(--primary); color: var(--primary); padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: left; transition: 0.2s; }
+        .option-btn:hover { background: var(--primary); color: white; }
+
+        /* FORM STYLES */
         .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
-        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-        
-        .tcpa-box { font-size: 0.8rem; color: var(--gray); margin: 1rem 0; display: flex; gap: 10px; align-items: flex-start; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 0.5rem; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid var(--gray); border-radius: 6px; font-size: 1rem; }
+
+        .tcpa-box { font-size: 0.75rem; color: var(--gray); margin: 1rem 0; display: flex; gap: 8px; align-items: flex-start; }
         .tcpa-box input { margin-top: 3px; }
 
-        /* Blog Styling */
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .blog-card { background: white; border-radius: 6px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .btn-cta { background-color: var(--secondary); color: white; border: none; padding: 14px 28px; font-size: 1.1rem; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; }
+        .btn-cta:hover { opacity: 0.9; }
+
+        .section-title { text-align: center; color: var(--primary); margin: 3rem 0 1.5rem; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+        .blog-card { background: white; padding: 1.5rem; border-radius: 8px; border-top: 4px solid var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .blog-card h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: 0.5rem; }
 
-        /* Footer & Legal */
-        footer { background-color: var(--primary); color: white; padding: 2rem 5%; font-size: 0.85rem; margin-top: 3rem; }
-        .disclaimer { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; margin-top: 1rem; color: #D1D5DB; }
+        footer { background: var(--primary); color: white; text-align: center; padding: 2rem 1rem; margin-top: 4rem; font-size: 0.85rem; }
+        .disclaimer { margin-top: 1rem; color: #ccc; max-width: 700px; margin-left: auto; margin-right: auto; }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">Fresh Start Finance</a>
-        <nav>
-            <a href="#quiz">Precalificar</a>
-            <a href="#blog">Recursos</a>
-            <a href="#nosotros">Nosotros</a>
-        </nav>
+        <div class="logo">Fresh Start Finance</div>
     </header>
 
     <section class="hero">
-        <h1>Tu camino hacia una mejor organización financiera</h1>
-        <p>Aprende a manejar tus deudas de forma estratégica y descubre opciones para tus proyectos personales con total transparencia.</p>
-        <a href="#quiz" class="btn-cta">Descubre tus opciones en 1 minuto</a>
+        <h1>Descubre tus opciones en 1 minuto</h1>
+        <p>Herramienta educativa interactiva para guiarte en el análisis de tus finanzas personales.</p>
     </section>
 
-    <div class="container" id="quiz">
-        <h2 class="section-title">Herramienta de Precalificación Gratuita</h2>
+    <div class="container">
         <div class="quiz-card">
             
             <!-- PASO 1 -->
             <div class="quiz-step active" id="step-1">
-                <h3>Paso 1 de 4: ¿Qué monto estimado estás buscando?</h3>
+                <h3>Paso 1 de 4: ¿Cuál es tu objetivo financiero principal?</h3>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="nextStep(1)">$1,000 – $3,000 USD</button>
-                    <button class="option-btn" onclick="nextStep(1)">$3,000 – $7,500 USD</button>
-                    <button class="option-btn" onclick="nextStep(1)">$7,500 – $15,000 USD</button>
-                    <button class="option-btn" onclick="nextStep(1)">Más de $15,000 USD</button>
+                    <button class="option-btn" onclick="nextStep(2)">Consolidar deudas</button>
+                    <button class="option-btn" onclick="nextStep(2)">Obtener un préstamo personal</button>
+                    <button class="option-btn" onclick="nextStep(2)">Mejorar mi historial crediticio</button>
+                    <button class="option-btn" onclick="nextStep(2)">Educación en presupuestos</button>
                 </div>
             </div>
 
             <!-- PASO 2 -->
             <div class="quiz-step" id="step-2">
-                <h3>Paso 2 de 4: ¿Cuál es el propósito principal?</h3>
+                <h3>Paso 2 de 4: ¿Cuál es el monto estimado que buscas evaluar?</h3>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="nextStep(2)">Consolidación de deudas</button>
-                    <button class="option-btn" onclick="nextStep(2)">Gastos médicos o de emergencia</button>
-                    <button class="option-btn" onclick="nextStep(2)">Mejoras del hogar</button>
-                    <button class="option-btn" onclick="nextStep(2)">Otro propósito personal</button>
+                    <button class="option-btn" onclick="nextStep(3)">Menos de $2,000</button>
+                    <button class="option-btn" onclick="nextStep(3)">$2,000 - $5,000</button>
+                    <button class="option-btn" onclick="nextStep(3)">$5,000 - $10,000</button>
+                    <button class="option-btn" onclick="nextStep(3)">Más de $10,000</button>
                 </div>
             </div>
 
             <!-- PASO 3 -->
             <div class="quiz-step" id="step-3">
-                <h3>Paso 3 de 4: Estimado de tu nivel de crédito</h3>
+                <h3>Paso 3 de 4: Estimado de tu nivel de ingresos mensuales</h3>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="nextStep(3)">Excelente / Bueno (680+)</button>
-                    <button class="option-btn" onclick="nextStep(3)">Promedio (600 - 679)</button>
-                    <button class="option-btn" onclick="nextStep(3)">Necesita trabajo (&lt; 600)</button>
-                    <button class="option-btn" onclick="nextStep(3)">No estoy seguro/a</button>
+                    <button class="option-btn" onclick="nextStep(4)">Menos de $1,500</button>
+                    <button class="option-btn" onclick="nextStep(4)">$1,500 - $3,000</button>
+                    <button class="option-btn" onclick="nextStep(4)">$3,000 - $5,000</button>
+                    <button class="option-btn" onclick="nextStep(4)">Más de $5,000</button>
                 </div>
             </div>
 
-        <!-- PASO 4 (FORMULARIO Y CONSENTIMIENTO) -->
+            <!-- PASO 4 (FORMULARIO Y CONSENTIMIENTO) -->
             <div class="quiz-step" id="step-4">
                 <h3>Paso 4 de 4: Datos para ver tus opciones</h3>
                 <form id="leadForm" onsubmit="submitForm(event)">
                     <div class="form-group">
-                        <label>Nombre y Apellido</label>
-                        <input type="text" required placeholder="Ej. Juan Pérez">
+                        <label for="fullname">Nombre y Apellido</label>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Ej. Juan Pérez">
                     </div>
                     <div class="form-group">
-                        <label>Correo Electrónico</label>
-                        <input type="email" required placeholder="correo@ejemplo.com">
-                    </div><input type="tel" id="phone" name="phone" placeholder="3051234567" pattern="[0-9]{10}" maxlength="10" 
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
+                    </div>
                     <div class="form-group">
-                        <label>Teléfono Móvil</label>
-                    
+                        <label for="phone">Teléfono Móvil</label>
+                        <input type="tel" id="phone" name="phone" placeholder="3051234567" pattern="[0-9]{10}" maxlength="10" required title="Ingresa un número válido de 10 dígitos de EE. UU.">
                     </div>
 
                     <div class="tcpa-box">
@@ -134,14 +127,14 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="btn-cta" style="width: 100%;">Ver Opciones Disponibles</button>
+                    <button type="submit" class="btn-cta">Ver Opciones Disponibles</button>
                 </form>
             </div>
 
             <!-- CONFIRMACIÓN SIMULADA -->
             <div class="quiz-step" id="step-thanks">
                 <h3 style="color: var(--secondary);">¡Solicitud Recibida!</h3>
-                <p style="margin-top: 10px;">Gracias por completarlo. En esta etapa de prueba, tus datos han sido procesados de forma segura en nuestro sistema local. Pronto nos pondremos en contacto contigo.</p>
+                <p style="margin-top: 10px;">Gracias por completarlo. Un especialista evaluará tus respuestas y se pondrá en contacto brevemente con opciones personalizadas.</p>
             </div>
 
         </div>
@@ -153,15 +146,15 @@
         <div class="blog-grid">
             <div class="blog-card">
                 <h3>3 señales de que tus deudas están consumiendo tu sueldo</h3>
-                <p>Aprende a identificar si el pago de intereses está frenando tu capacidad de ahorro y cómo reorganizar tu presupuesto mensual.</p>
+                <p>Aprende a identificar si el pago de intereses está frenando tus metas personales.</p>
             </div>
             <div class="blog-card">
-                <h3>Cómo se calcula tu Credit Score en EE.UU.</h3>
-                <p>Desglosamos de forma sencilla los 5 factores que componen tu puntaje de crédito y cómo mejorarlo paso a paso.</p>
+                <h3>¿Cómo se calcula tu Credit Score?</h3>
+                <p>Desglosamos de forma sencilla los 5 factores clave que determinan tu puntaje crediticio.</p>
             </div>
             <div class="blog-card">
                 <h3>Consolidación de Deudas vs. Pago Individual</h3>
-                <p>Analizamos pros y contras de agrupar tus tarjetas de crédito en un solo pago mensual con tasa fija.</p>
+                <p>Analizamos pros y contras de agrupar todos tus pagos en una sola cuota mensual.</p>
             </div>
         </div>
     </div>
@@ -169,26 +162,27 @@
     <!-- SOBRE NOSOTROS -->
     <div class="container" id="nosotros">
         <h2 class="section-title">Sobre Fresh Start Finance</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto;">Somos una plataforma de recursos educativos e informativos sobre finanzas personales. Nuestro objetivo es ayudarte a entender mejor tus opciones de crédito para tomar decisiones informadas antes de solicitar cualquier producto financiero en EE.UU.</p>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto;">Ofrecemos herramientas interactivas e información objetiva para ayudar a la comunidad hispana en EE. UU. a tomar decisiones financieras más informadas y acceder a mejores alternativas de crédito.</p>
     </div>
 
     <footer>
         <p>&copy; 2026 Fresh Start Finance. Todos los derechos reservados.</p>
         <div class="disclaimer">
-            <p><strong>Aviso Legal / Disclaimer:</strong> Fresh Start Finance no es un prestamista y no otorga préstamos directamente. Conectamos a los usuarios con opciones de terceros según la información proporcionada. No garantizamos aprobación, tasas ni condiciones específicas. Contenido con fines informativos, no constituye asesoría financiera profesional.</p>
+            <p><strong>Aviso Legal / Disclaimer:</strong> Fresh Start Finance no es un prestamista directo ni toma decisiones de crédito. Operamos como un recurso educativo y plataforma de vinculación. El uso de nuestro formulario no garantiza la aprobación de ningún producto financiero. Todos los términos, tasas y condiciones son determinados exclusivamente por las instituciones financieras o socios correspondientes.</p>
         </div>
     </footer>
 
     <script>
-        function nextStep(currentStep) {
-            document.getElementById(`step-${currentStep}`).classList.remove('active');
-            document.getElementById(`step-${currentStep + 1}`).classList.add('active');
+        function nextStep(stepNumber) {
+            document.querySelectorAll('.quiz-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step-' + stepNumber).classList.add('active');
         }
 
         function submitForm(event) {
             event.preventDefault();
-            document.getElementById('step-4').classList.remove('active');
-            document.getElementById('step-thanks').classList.add('active');
+            nextStep('thanks');
         }
     </script>
 </body>
