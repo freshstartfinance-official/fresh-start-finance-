@@ -145,6 +145,43 @@
   <p style="font-size:14px; color:#666; margin-top:12px;">
     Checklist: 10 pasos para mejorar tu puntaje de crédito · PDF gratuito
   </p>
+<!-- Bloque Bono Desbloqueable: Calculadora Google Sheets -->
+<div class="bonus-container" style="margin-top: 25px; padding: 20px; border: 1px dashed #556B2F; border-radius: 8px; background-color: #F5F7EC; text-align: center;">
+  <h3 style="color: #3F4A1F; margin-bottom: 10px;">🔒 Desbloquea tu Calculadora de Deudas (Google Sheets)</h3>
+  <p style="font-size: 14px; color: #333; margin-bottom: 15px;">
+    ¡Comparte esta página en Facebook para activar de inmediato tu plantilla con el Método Bola de Nieve!
+  </p>
+  
+  <!-- Botón 1: Compartir en Facebook -->
+  <a id="fsf-btn-share" 
+     href="https://www.facebook.com/sharer/sharer.php?u=https://tu-usuario.github.io/tu-repo/" 
+     target="_blank" 
+     rel="noopener" 
+     onclick="unlockBonus()" 
+     style="display: inline-block; background-color: #1877F2; color: #fff; padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-bottom: 10px;">
+     Compartir en Facebook para Desbloquear
+  </a>
+
+  <!-- Botón 2: Descargar Calculadora (Google Sheets) -->
+  <div id="bonus-download-wrapper" style="display: none; margin-top: 10px;">
+    <a id="fsf-btn-download" 
+       href="https://docs.google.com/spreadsheets/d/1JFYnh2_qKAzZO9hRaCROtxbKNSD7fvhthDip29cSLug/copy" 
+       target="_blank" 
+       rel="noopener" 
+       style="display: inline-block; background-color: #556B2F; color: #fff; padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+       DESCARGAR CALCULADORA (GOOGLE SHEETS)
+    </a>
+  </div>
+</div>
+
+<script>
+  function unlockBonus() {
+    setTimeout(function() {
+      document.getElementById('bonus-download-wrapper').style.display = 'block';
+    }, 1000);
+  }
+</script>
+
 </div>
 
             </div>
