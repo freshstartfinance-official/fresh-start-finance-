@@ -397,16 +397,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function goBack(){ if(current>0) go(current-1); }
-  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzr9z4rMsFTIPJ-YG4SQkw_V8GMFK-KOH8N48ER94CArjJg20EmAJZK7kMs4shOlocSmw/exec';
-  const quizAnswers = { q1:'', q2:'', q3:'' };
   function startQuiz(){
     if(typeof gtag==='function'){ try{ gtag('event','quiz_start',{language:curLang}); }catch(e){} }
     go(1);
   }
   function pick(q, el, next){
-    const lbl = el.querySelector('span[data-i18n]');
-    quizAnswers[q] = lbl ? lbl.textContent.trim() : '';
-    if(typeof gtag==='function'){ try{ gtag('event','quiz_answer',{question:q, answer:quizAnswers[q], language:curLang}); }catch(e){} }
+    if(typeof gtag==='function'){ try{ gtag('event','quiz_answer',{question:q, language:curLang}); }catch(e){} }
     go(next);
   }
   function trackDl(which){
@@ -418,18 +414,6 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
   }
   function submitForm(e){
     e.preventDefault();
-    const payload = {
-      lang: curLang,
-      q1: quizAnswers.q1, q2: quizAnswers.q2, q3: quizAnswers.q3,
-      name: document.getElementById('fullname').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      tcpa: document.getElementById('tcpa').checked === true,
-      source: 'landing-quiz'
-    };
-    try{
-      fetch(WEBHOOK_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body:JSON.stringify(payload)});
-    }catch(err){}
     if(typeof gtag==='function'){ try{ gtag('event','quiz_complete',{language:curLang}); }catch(e){} }
     if(typeof fbq==='function'){ try{ fbq('track','Lead'); }catch(e){} }
     go(5);
