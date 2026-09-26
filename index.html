@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fresh Start Finance | Educación Financiera</title>
-    <!-- Vista previa al compartir en Facebook/WhatsApp -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fresh Start Finance | Educación Financiera</title>
+<!-- Vista previa al compartir en Facebook/WhatsApp -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fresh Start Finance">
 <meta property="og:title" content="Fresh Start Finance | Quiz de Salud Financiera">
@@ -14,250 +14,267 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_US">
-
-
-    <style>
-        :root {
-            --primary: #0F2C59;
-            --secondary: #005B41;
-            --accent: #008170;
-            --light: #F8F9FA;
-            --dark: #1E1E1E;
-            --gray: #6C757D;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--light); color: var(--dark); font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; }
-
-        header { background-color: var(--primary); color: white; padding: 1rem 5%; text-align: center; }
-        header .logo { font-size: 1.4rem; font-weight: bold; }
-        nav a { color: white; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
-
-        .hero { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 3rem 5%; text-align: center; }
-        .hero h1 { font-size: 2rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; }
-
-        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        
-        /* QUIZ CONTAINER */
-        .quiz-card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .quiz-step { display: none; }
-        .quiz-step.active { display: block; }
-
-        .options-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 1rem; }
-        .option-btn { background: var(--light); border: 2px solid var(--primary); color: var(--primary); padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: left; transition: 0.2s; }
-        .option-btn:hover { background: var(--primary); color: white; }
-
-        /* FORM STYLES */
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 0.5rem; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid var(--gray); border-radius: 6px; font-size: 1rem; }
-
-        .tcpa-box { font-size: 0.75rem; color: var(--gray); margin: 1rem 0; display: flex; gap: 8px; align-items: flex-start; }
-        .tcpa-box input { margin-top: 3px; }
-
-        .btn-cta { background-color: var(--secondary); color: white; border: none; padding: 14px 28px; font-size: 1.1rem; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; }
-        .btn-cta:hover { opacity: 0.9; }
-
-        .section-title { text-align: center; color: var(--primary); margin: 3rem 0 1.5rem; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-        .blog-card { background: white; padding: 1.5rem; border-radius: 8px; border-top: 4px solid var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .blog-card h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: 0.5rem; }
-
-        footer { background: var(--primary); color: white; text-align: center; padding: 2rem 1rem; margin-top: 4rem; font-size: 0.85rem; }
-        .disclaimer { margin-top: 1rem; color: #ccc; max-width: 700px; margin-left: auto; margin-right: auto; }
-    </style>
+<style>
+  :root{
+    --navy:#0F2C59; --teal:#005B41; --teal-light:#008170;
+    --bg:#F2F4F7; --card:#FFFFFF; --ink:#1E1E1E; --muted:#6C757D;
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{background:#0b1e3a;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);}
+  /* Columna tipo app */
+  .app{max-width:480px;margin:0 auto;min-height:100dvh;background:var(--bg);
+       display:flex;flex-direction:column;position:relative;
+       box-shadow:0 0 60px rgba(0,0,0,.45);}
+  /* Barra superior */
+  .appbar{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,var(--navy),var(--teal));
+          color:#fff;padding:14px 20px 12px;}
+  .appbar .row{display:flex;align-items:center;gap:10px}
+  .appbar .logo{font-weight:800;font-size:1.05rem;letter-spacing:.2px}
+  .appbar .back{border:0;background:rgba(255,255,255,.15);color:#fff;width:34px;height:34px;border-radius:50%;
+                font-size:1.1rem;cursor:pointer;display:none;align-items:center;justify-content:center}
+  .appbar .back.show{display:flex}
+  .progress{height:6px;background:rgba(255,255,255,.25);border-radius:99px;margin-top:12px;overflow:hidden}
+  .progress i{display:block;height:100%;width:0;background:#fff;border-radius:99px;transition:width .35s ease}
+  .step-label{font-size:.75rem;opacity:.85;margin-top:6px}
+  /* Pantallas */
+  main{flex:1;padding:22px 18px 120px}
+  .screen{display:none;animation:fadeUp .3s ease}
+  .screen.active{display:block}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+           color:var(--teal-light);background:#e6f2ee;padding:6px 12px;border-radius:99px;margin-bottom:12px}
+  h1{font-size:1.65rem;line-height:1.25;color:var(--navy);margin-bottom:10px}
+  h2.q{font-size:1.35rem;line-height:1.3;color:var(--navy);margin-bottom:6px}
+  p.sub{color:var(--muted);font-size:.98rem;margin-bottom:20px}
+  /* Héroe compacto */
+  .hero-card{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;border-radius:var(--radius);
+             padding:28px 22px;margin-bottom:18px}
+  .hero-card h1{color:#fff}
+  .hero-card p{opacity:.9;font-size:.98rem;margin-bottom:0}
+  .trust{display:flex;gap:10px;margin:16px 0 4px}
+  .trust div{flex:1;background:var(--card);border-radius:14px;padding:12px 10px;text-align:center;font-size:.78rem;
+             color:var(--navy);font-weight:600;box-shadow:0 2px 8px rgba(15,44,89,.08)}
+  .trust b{display:block;font-size:1.15rem}
+  /* Opciones grandes */
+  .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);
+       border:2px solid #e3e8ef;border-radius:16px;padding:18px 16px;margin-bottom:12px;font-size:1.02rem;
+       font-weight:600;color:var(--navy);cursor:pointer;transition:border-color .15s,transform .1s;min-height:64px}
+  .opt:active{transform:scale(.985)}
+  .opt:hover{border-color:var(--teal-light)}
+  .opt .dot{flex:0 0 26px;height:26px;border-radius:50%;border:2px solid #c7d2de;display:inline-block}
+  .opt small{display:block;font-weight:400;color:var(--muted);font-size:.82rem}
+  /* Formulario */
+  .field{margin-bottom:14px}
+  .field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:6px;color:var(--navy)}
+  .field input{width:100%;padding:16px;border:2px solid #e3e8ef;border-radius:14px;font-size:1rem;background:#fff}
+  .field input:focus{outline:none;border-color:var(--teal-light)}
+  .tcpa{background:#fff;border:1px solid #e3e8ef;border-radius:14px;padding:14px;font-size:.78rem;color:var(--muted);
+        display:flex;gap:10px;margin:6px 0 16px;line-height:1.5}
+  .tcpa input{margin-top:4px;transform:scale(1.3)}
+  /* CTA inferior fijo */
+  .sticky-cta{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;
+              padding:14px 18px calc(14px + env(safe-area-inset-bottom));
+              background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+              border-top:1px solid #e3e8ef;z-index:60}
+  .btn{display:block;width:100%;border:0;border-radius:16px;padding:17px;font-size:1.05rem;font-weight:800;
+       color:#fff;background:linear-gradient(135deg,var(--teal),var(--teal-light));cursor:pointer;min-height:58px}
+  .btn:active{transform:scale(.99)}
+  .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);margin-top:10px}
+  /* Confirmación */
+  .done-hero{text-align:center;padding:10px 0 18px}
+  .check{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));
+         color:#fff;font-size:2.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .dl-card{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:14px;
+           box-shadow:0 2px 10px rgba(15,44,89,.07);text-align:center}
+  .dl-card h3{color:var(--navy);font-size:1.05rem;margin-bottom:8px}
+  .dl-card p{font-size:.88rem;color:var(--muted);margin-bottom:14px}
+  .bonus{border:2px dashed var(--teal-light);background:#eef6f3}
+  /* Recursos: carrusel horizontal */
+  .rail{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory}
+  .rail::-webkit-scrollbar{display:none}
+  .rcard{flex:0 0 240px;scroll-snap-align:start;background:var(--card);border-radius:16px;padding:18px;
+         border-top:4px solid var(--teal-light);box-shadow:0 2px 8px rgba(15,44,89,.06)}
+  .rcard h3{color:var(--navy);font-size:.98rem;margin-bottom:8px}
+  .rcard p{font-size:.85rem;color:var(--muted)}
+  .section-t{color:var(--navy);font-size:1.15rem;margin:26px 0 12px}
+  .about{background:var(--card);border-radius:var(--radius);padding:20px;font-size:.92rem;color:#333;
+         box-shadow:0 2px 8px rgba(15,44,89,.06)}
+  footer{padding:22px 20px 110px;text-align:center;font-size:.78rem;color:var(--muted)}
+  footer .disc{margin-top:10px;line-height:1.6}
+  /* WhatsApp flotante */
+  .wa{position:fixed;bottom:96px;right:calc(50% - 240px + 18px);width:58px;height:58px;background:#25D366;
+      border-radius:50%;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 14px rgba(0,0,0,.28);z-index:70}
+  @media (max-width:520px){.wa{right:18px}}
+</style>
 </head>
 <body>
+<div class="app">
 
-    <header>
-        <div class="logo">Fresh Start Finance</div>
-    </header>
+  <div class="appbar">
+    <div class="row">
+      <button class="back" id="backBtn" onclick="goBack()" aria-label="Atrás">←</button>
+      <div class="logo">Fresh Start Finance</div>
+    </div>
+    <div class="progress"><i id="pbar"></i></div>
+    <div class="step-label" id="plabel"></div>
+  </div>
 
-    <section class="hero">
+  <main>
+    <!-- PANTALLA 0 · Bienvenida -->
+    <section class="screen active" id="s0">
+      <div class="hero-card">
+        <span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff">Quiz de Salud Financiera</span>
         <h1>Descubre tus opciones en 1 minuto</h1>
-        <p>Herramienta educativa interactiva para guiarte en el análisis de tus finanzas personales.</p>
+        <p>Herramienta educativa interactiva para guiarte en el análisis de tus finanzas personales. Gratis y en español.</p>
+      </div>
+      <div class="trust">
+        <div><b>2 min</b>Duración</div>
+        <div><b>100%</b>Gratis</div>
+        <div><b>ES</b>En español</div>
+      </div>
     </section>
 
-    <div class="container">
-        <div class="quiz-card">
-            
-            <!-- PASO 1 -->
-            <div class="quiz-step active" id="step-1">
-                <h3>Paso 1 de 4: ¿Cuál es tu objetivo financiero principal?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="nextStep(2)">Consolidar deudas</button>
-                    <button class="option-btn" onclick="nextStep(2)">Obtener un préstamo personal</button>
-                    <button class="option-btn" onclick="nextStep(2)">Mejorar mi historial crediticio</button>
-                    <button class="option-btn" onclick="nextStep(2)">Educación en presupuestos</button>
-                </div>
-            </div>
+    <!-- PANTALLA 1 · Objetivo -->
+    <section class="screen" id="s1">
+      <span class="eyebrow">Pregunta 1 de 3</span>
+      <h2 class="q">¿Cuál es tu objetivo financiero principal?</h2>
+      <p class="sub">Toca una opción para continuar.</p>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Consolidar deudas<small>Junta tus pagos en uno solo</small></span></button>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Obtener un préstamo personal<small>Evalúa tus alternativas</small></span></button>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Mejorar mi historial crediticio<small>Sube tu puntaje paso a paso</small></span></button>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Educación en presupuestos<small>Organiza tus finanzas</small></span></button>
+    </section>
 
-            <!-- PASO 2 -->
-            <div class="quiz-step" id="step-2">
-                <h3>Paso 2 de 4: ¿Cuál es el monto estimado que buscas evaluar?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="nextStep(3)">Menos de $2,000</button>
-                    <button class="option-btn" onclick="nextStep(3)">$2,000 - $5,000</button>
-                    <button class="option-btn" onclick="nextStep(3)">$5,000 - $10,000</button>
-                    <button class="option-btn" onclick="nextStep(3)">Más de $10,000</button>
-                </div>
-            </div>
+    <!-- PANTALLA 2 · Monto -->
+    <section class="screen" id="s2">
+      <span class="eyebrow">Pregunta 2 de 3</span>
+      <h2 class="q">¿Cuál es el monto estimado que buscas evaluar?</h2>
+      <p class="sub">Toca una opción para continuar.</p>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span>Menos de $2,000</span></button>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span>$2,000 – $5,000</span></button>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span>$5,000 – $10,000</span></button>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span>Más de $10,000</span></button>
+    </section>
 
-            <!-- PASO 3 -->
-            <div class="quiz-step" id="step-3">
-                <h3>Paso 3 de 4: Estimado de tu nivel de ingresos mensuales</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="nextStep(4)">Menos de $1,500</button>
-                    <button class="option-btn" onclick="nextStep(4)">$1,500 - $3,000</button>
-                    <button class="option-btn" onclick="nextStep(4)">$3,000 - $5,000</button>
-                    <button class="option-btn" onclick="nextStep(4)">Más de $5,000</button>
-                </div>
-            </div>
+    <!-- PANTALLA 3 · Ingresos -->
+    <section class="screen" id="s3">
+      <span class="eyebrow">Pregunta 3 de 3</span>
+      <h2 class="q">Estimado de tu nivel de ingresos mensuales</h2>
+      <p class="sub">Toca una opción para continuar.</p>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span>Menos de $1,500</span></button>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span>$1,500 – $3,000</span></button>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span>$3,000 – $5,000</span></button>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span>Más de $5,000</span></button>
+    </section>
 
-            <!-- PASO 4 (FORMULARIO Y CONSENTIMIENTO) -->
-            <div class="quiz-step" id="step-4">
-                <h3>Paso 4 de 4: Datos para ver tus opciones</h3>
-                <form id="leadForm" onsubmit="submitForm(event)">
-                    <div class="form-group">
-                        <label for="fullname">Nombre y Apellido</label>
-                        <input type="text" id="fullname" name="fullname" required placeholder="Ej. Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Teléfono Móvil</label>
-                        <input type="tel" id="phone" name="phone" placeholder="3051234567" pattern="[0-9]{10}" maxlength="10" required title="Ingresa un número válido de 10 dígitos de EE. UU.">
-                    </div>
+    <!-- PANTALLA 4 · Formulario -->
+    <section class="screen" id="s4">
+      <span class="eyebrow">Último paso</span>
+      <h2 class="q">¿Dónde te enviamos tus opciones?</h2>
+      <p class="sub">Completa tus datos para ver tus opciones disponibles.</p>
+      <form id="leadForm" onsubmit="submitForm(event)">
+        <div class="field">
+          <label for="fullname">Nombre y apellido</label>
+          <input type="text" id="fullname" required placeholder="Ej. Juan Pérez" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" required placeholder="correo@ejemplo.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Teléfono móvil (EE. UU.)</label>
+          <input type="tel" id="phone" required placeholder="3051234567" pattern="[0-9]{10}" maxlength="10"
+                 inputmode="numeric" title="Ingresa un número válido de 10 dígitos de EE. UU.">
+        </div>
+        <div class="tcpa">
+          <input type="checkbox" id="tcpa" required>
+          <label for="tcpa">Al hacer clic en "Enviar", doy mi consentimiento expreso por escrito para que Fresh Start Finance y sus socios me contacten vía llamada, SMS o email — incluyendo mediante marcado automático o mensajes pregrabados — sobre opciones de préstamos personales. Entiendo que no es requisito para recibir un préstamo y puedo revocar mi consentimiento en cualquier momento.</label>
+        </div>
+      </form>
+    </section>
 
-                    <div class="tcpa-box">
-                        <input type="checkbox" id="tcpa" required>
-                        <label for="tcpa">
-                            Al hacer clic en 'Enviar', doy mi consentimiento expreso por escrito para que Fresh Start Finance y sus socios me contacten vía llamada, SMS o email — incluyendo mediante marcado automático o mensajes pregrabados — sobre opciones de préstamos personales. Entiendo que no es requisito para recibir un préstamo y puedo revocar mi consentimiento en cualquier momento.
-                        </label>
-                    </div>
+    <!-- PANTALLA 5 · Confirmación -->
+    <section class="screen" id="s5">
+      <div class="done-hero">
+        <div class="check">✓</div>
+        <h2 class="q">¡Solicitud recibida!</h2>
+        <p class="sub">Gracias por tu interés. Mientras preparamos tus opciones, descarga estos recursos gratuitos.</p>
+      </div>
+      <div class="dl-card">
+        <h3>Checklist: 10 pasos para mejorar tu puntaje de crédito</h3>
+        <p>PDF gratuito · En español</p>
+        <a class="btn" style="text-decoration:none;display:block;text-align:center" href="lead-magnet-checklist.pdf" download>Descargar mi checklist gratis</a>
+      </div>
+      <div class="dl-card bonus">
+        <h3>Calculadora de Deudas — Método Bola de Nieve</h3>
+        <p>Comparte esta página en Facebook para desbloquear tu plantilla de Google Sheets.</p>
+        <a class="btn" style="text-decoration:none;display:block;text-align:center;background:#1877F2"
+           href="https://www.facebook.com/sharer/sharer.php?u=https://freshstartfinance-official.github.io/fresh-start-finance-/"
+           target="_blank" rel="noopener" onclick="unlockBonus()">Compartir en Facebook</a>
+        <div id="bonusDl" style="display:none;margin-top:12px">
+          <a class="btn ghost" style="text-decoration:none;display:block;text-align:center"
+             href="https://docs.google.com/spreadsheets/d/1JFYnh2_qKAzZO9hRaCROtxbKNSD7fvhthDip29cSLug/copy"
+             target="_blank" rel="noopener">Abrir calculadora</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <h3>¿Prefieres hablar con alguien?</h3>
+        <p>Escríbenos por WhatsApp y te orientamos.</p>
+        <a class="btn ghost" style="text-decoration:none;display:block;text-align:center"
+           href="https://wa.me/13058482926?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </section>
 
-                    <button type="submit" class="btn-cta">Ver Opciones Disponibles</button>
-                </form>
-            </div>
+    <!-- Recursos -->
+    <h2 class="section-t">Recursos de educación financiera</h2>
+    <div class="rail">
+      <div class="rcard"><h3>3 señales de que tus deudas están consumiendo tu sueldo</h3><p>Aprende a identificar si el pago de intereses está frenando tus metas personales.</p></div>
+      <div class="rcard"><h3>¿Cómo se calcula tu Credit Score?</h3><p>Desglosamos de forma sencilla los 5 factores clave que determinan tu puntaje crediticio.</p></div>
+      <div class="rcard"><h3>Consolidación de Deudas vs. Pago Individual</h3><p>Analizamos pros y contras de agrupar todos tus pagos en una sola cuota mensual.</p></div>
+    </div>
 
-            <!-- CONFIRMACIÓN SIMULADA -->
-            <div class="quiz-step" id="step-thanks">
-                <h3 style="color: var(--secondary);">¡Solicitud Recibida!</h3>
-                <p style="margin-top: 10px;">¡Gracias por tu interés! Estamos construyendo nuestra red de opciones de préstamos personales. Mientras tanto, descarga esta guía gratuita para empezar a mejorar tu perfil crediticio hoy mismo.</p>
-                <!-- Lead Magnet: botón de descarga del checklist -->
-<div style="text-align:center; margin:24px 0;">
-  <a href="lead-magnet-checklist.pdf"
-     download="lead-magnet-checklist.pdf"
-     style="display:inline-block; background-color:#6B7F3E; color:#ffffff; font-size:18px; font-weight:bold; padding:16px 32px; border-radius:12px; text-decoration:none;">
-    📥 Descargar mi checklist gratis
-  </a>
-  <p style="font-size:14px; color:#666; margin-top:12px;">
-    Checklist: 10 pasos para mejorar tu puntaje de crédito · PDF gratuito
-  </p>
-<!-- Bloque Bono Desbloqueable: Calculadora Google Sheets -->
-<div class="bonus-container" style="margin-top: 25px; padding: 20px; border: 1px dashed #556B2F; border-radius: 8px; background-color: #F5F7EC; text-align: center;">
-  <h3 style="color: #3F4A1F; margin-bottom: 10px;">🔒 Desbloquea tu Calculadora de Deudas (Google Sheets)</h3>
-  <p style="font-size: 14px; color: #333; margin-bottom: 15px;">
-    ¡Comparte esta página en Facebook para activar de inmediato tu plantilla con el Método Bola de Nieve!
-  </p>
-  
-    <!-- Botón 1: Compartir en Facebook -->
-  <a id="fsf-btn-share" 
-     href="https://www.facebook.com/sharer/sharer.php?u=https://freshstartfinance-official.github.io/fresh-start-finance-/" 
-     target="_blank" 
-     rel="noopener" 
-     onclick="unlockBonus()" 
-     style="display: inline-block; background-color: #1877F2; color: #fff; padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-bottom: 10px;">
-     Compartir en Facebook para Desbloquear
-  </a>
+    <h2 class="section-t">Sobre Fresh Start Finance</h2>
+    <div class="about">Ofrecemos herramientas interactivas e información objetiva para ayudar a la comunidad hispana en EE. UU. a tomar decisiones financieras más informadas y acceder a mejores alternativas de crédito.</div>
+  </main>
 
+  <footer>
+    <p>© 2026 Fresh Start Finance · <a href="privacidad.html" style="color:#008170">Política de Privacidad</a></p>
+    <p class="disc"><strong>Aviso legal:</strong> Fresh Start Finance no es un prestamista y no otorga préstamos directamente. No vendemos ni compartimos tus datos con terceros, salvo cuando nos das tu consentimiento expreso en el Quiz de Salud Financiera. Contenido con fines informativos, no constituye asesoría financiera profesional.</p>
+  </footer>
 
-  <!-- Botón 2: Descargar Calculadora (Google Sheets) -->
-  <div id="bonus-download-wrapper" style="display: none; margin-top: 10px;">
-    <a id="fsf-btn-download" 
-       href="https://docs.google.com/spreadsheets/d/1JFYnh2_qKAzZO9hRaCROtxbKNSD7fvhthDip29cSLug/copy" 
-       target="_blank" 
-       rel="noopener" 
-       style="display: inline-block; background-color: #556B2F; color: #fff; padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
-       DESCARGAR CALCULADORA (GOOGLE SHEETS)
-    </a>
+  <!-- CTA fijo contextual -->
+  <div class="sticky-cta" id="cta0">
+    <button class="btn" onclick="go(1)">Comenzar el quiz →</button>
   </div>
+  <div class="sticky-cta" id="cta4" style="display:none">
+    <button class="btn" onclick="document.getElementById('leadForm').requestSubmit()">Ver opciones disponibles</button>
+  </div>
+
+  <a class="wa" href="https://wa.me/13058482926?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Fresh%20Start%20Finance"
+     target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 </div>
 
 <script>
-  function unlockBonus() {
-    setTimeout(function() {
-      document.getElementById('bonus-download-wrapper').style.display = 'block';
-    }, 1000);
+  let current = 0;
+  const labels = ["","Pregunta 1 de 4","Pregunta 2 de 4","Pregunta 3 de 4","Tus datos","¡Listo!"];
+  function go(n){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById('s'+n).classList.add('active');
+    current = n;
+    document.getElementById('pbar').style.width = Math.min(100,(n/5)*100) + '%';
+    document.getElementById('plabel').textContent = labels[n] || '';
+    document.getElementById('backBtn').classList.toggle('show', n>0 && n<5);
+    document.getElementById('cta0').style.display = n===0 ? 'block':'none';
+    document.getElementById('cta4').style.display = n===4 ? 'block':'none';
+    window.scrollTo({top:0,behavior:'smooth'});
   }
+  function goBack(){ if(current>0) go(current-1); }
+  function submitForm(e){ e.preventDefault(); go(5); }
+  function unlockBonus(){ setTimeout(()=>{document.getElementById('bonusDl').style.display='block';},1200); }
 </script>
-
-</div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <!-- BLOG -->
-    <div class="container" id="blog">
-        <h2 class="section-title">Recursos de Educación Financiera</h2>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <h3>3 señales de que tus deudas están consumiendo tu sueldo</h3>
-                <p>Aprende a identificar si el pago de intereses está frenando tus metas personales.</p>
-            </div>
-            <div class="blog-card">
-                <h3>¿Cómo se calcula tu Credit Score?</h3>
-                <p>Desglosamos de forma sencilla los 5 factores clave que determinan tu puntaje crediticio.</p>
-            </div>
-            <div class="blog-card">
-                <h3>Consolidación de Deudas vs. Pago Individual</h3>
-                <p>Analizamos pros y contras de agrupar todos tus pagos en una sola cuota mensual.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SOBRE NOSOTROS -->
-    <div class="container" id="nosotros">
-        <h2 class="section-title">Sobre Fresh Start Finance</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto;">Ofrecemos herramientas interactivas e información objetiva para ayudar a la comunidad hispana en EE. UU. a tomar decisiones financieras más informadas y acceder a mejores alternativas de crédito.</p>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Fresh Start Finance. Todos los derechos reservados.</p>
-        <div class="disclaimer">
-            <p><strong>Aviso Legal / Disclaimer:</strong> Fresh Start Finance no es un prestamista directo ni toma decisiones de crédito. Operamos como un recurso educativo y plataforma de vinculación. El uso de nuestro formulario no garantiza la aprobación de ningún producto financiero. Todos los términos, tasas y condiciones son determinados exclusivamente por las instituciones financieras o socios correspondientes.</p>
-        </div>
-    </footer>
-
-    <script>
-        function nextStep(stepNumber) {
-            document.querySelectorAll('.quiz-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            document.getElementById('step-' + stepNumber).classList.add('active');
-        }
-
-        function submitForm(event) {
-            event.preventDefault();
-            nextStep('thanks');
-        }
-    </script>
-    </script>
-
-<!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/13058482926?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Fresh%20Start%20Finance"
-   target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
-   style="position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:9999;">
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-</body>
-</html>
-
 </body>
 </html>
