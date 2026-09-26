@@ -107,6 +107,8 @@
       border-radius:50%;display:flex;align-items:center;justify-content:center;
       box-shadow:0 4px 14px rgba(0,0,0,.28);z-index:70}
   @media (max-width:520px){.wa{right:18px}}
+  .langbtn{margin-left:auto;border:0;background:rgba(255,255,255,.18);color:#fff;font-weight:800;font-size:.8rem;
+           padding:8px 14px;border-radius:99px;cursor:pointer;letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -116,6 +118,7 @@
     <div class="row">
       <button class="back" id="backBtn" onclick="goBack()" aria-label="Atrás">←</button>
       <div class="logo">Fresh Start Finance</div>
+      <button id="langBtn" class="langbtn" onclick="toggleLang()" aria-label="Cambiar idioma / Switch language">EN</button>
     </div>
     <div class="progress"><i id="pbar"></i></div>
     <div class="step-label" id="plabel"></div>
@@ -125,72 +128,72 @@
     <!-- PANTALLA 0 · Bienvenida -->
     <section class="screen active" id="s0">
       <div class="hero-card">
-        <span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff">Quiz de Salud Financiera</span>
-        <h1>Descubre tus opciones en 1 minuto</h1>
-        <p>Herramienta educativa interactiva para guiarte en el análisis de tus finanzas personales. Gratis y en español.</p>
+        <span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff" data-i18n="heroEyebrow">Quiz de Salud Financiera</span>
+        <h1 data-i18n="heroH1">Descubre tus opciones en 1 minuto</h1>
+        <p data-i18n="heroP">Herramienta educativa interactiva para guiarte en el análisis de tus finanzas personales. Gratis y en español.</p>
       </div>
       <div class="trust">
-        <div><b>2 min</b>Duración</div>
-        <div><b>100%</b>Gratis</div>
-        <div><b>ES</b>En español</div>
+        <div><b data-i18n="t1n">2 min</b><span data-i18n="t1">Duración</span></div>
+        <div><b data-i18n="t2n">100%</b><span data-i18n="t2">Gratis</span></div>
+        <div><b data-i18n="t3n">ES</b><span data-i18n="t3">En español</span></div>
       </div>
     </section>
 
     <!-- PANTALLA 1 · Objetivo -->
     <section class="screen" id="s1">
-      <span class="eyebrow">Pregunta 1 de 3</span>
-      <h2 class="q">¿Cuál es tu objetivo financiero principal?</h2>
-      <p class="sub">Toca una opción para continuar.</p>
-      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Consolidar deudas<small>Junta tus pagos en uno solo</small></span></button>
-      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Obtener un préstamo personal<small>Evalúa tus alternativas</small></span></button>
-      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Mejorar mi historial crediticio<small>Sube tu puntaje paso a paso</small></span></button>
-      <button class="opt" onclick="go(2)"><span class="dot"></span><span>Educación en presupuestos<small>Organiza tus finanzas</small></span></button>
+      <span class="eyebrow" data-i18n="q1e">Pregunta 1 de 3</span>
+      <h2 class="q" data-i18n="q1">¿Cuál es tu objetivo financiero principal?</h2>
+      <p class="sub" data-i18n="tap">Toca una opción para continuar.</p>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span><span data-i18n="q1o1">Consolidar deudas</span><small data-i18n="q1o1s">Junta tus pagos en uno solo</small></span></button>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span><span data-i18n="q1o2">Obtener un préstamo personal</span><small data-i18n="q1o2s">Evalúa tus alternativas</small></span></button>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span><span data-i18n="q1o3">Mejorar mi historial crediticio</span><small data-i18n="q1o3s">Sube tu puntaje paso a paso</small></span></button>
+      <button class="opt" onclick="go(2)"><span class="dot"></span><span><span data-i18n="q1o4">Educación en presupuestos</span><small data-i18n="q1o4s">Organiza tus finanzas</small></span></button>
     </section>
 
     <!-- PANTALLA 2 · Monto -->
     <section class="screen" id="s2">
-      <span class="eyebrow">Pregunta 2 de 3</span>
-      <h2 class="q">¿Cuál es el monto estimado que buscas evaluar?</h2>
-      <p class="sub">Toca una opción para continuar.</p>
-      <button class="opt" onclick="go(3)"><span class="dot"></span><span>Menos de $2,000</span></button>
-      <button class="opt" onclick="go(3)"><span class="dot"></span><span>$2,000 – $5,000</span></button>
-      <button class="opt" onclick="go(3)"><span class="dot"></span><span>$5,000 – $10,000</span></button>
-      <button class="opt" onclick="go(3)"><span class="dot"></span><span>Más de $10,000</span></button>
+      <span class="eyebrow" data-i18n="q2e">Pregunta 2 de 3</span>
+      <h2 class="q" data-i18n="q2">¿Cuál es el monto estimado que buscas evaluar?</h2>
+      <p class="sub" data-i18n="tap">Toca una opción para continuar.</p>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span data-i18n="q2o1">Menos de $2,000</span></button>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span data-i18n="q2o2">$2,000 – $5,000</span></button>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span data-i18n="q2o3">$5,000 – $10,000</span></button>
+      <button class="opt" onclick="go(3)"><span class="dot"></span><span data-i18n="q2o4">Más de $10,000</span></button>
     </section>
 
     <!-- PANTALLA 3 · Ingresos -->
     <section class="screen" id="s3">
-      <span class="eyebrow">Pregunta 3 de 3</span>
-      <h2 class="q">Estimado de tu nivel de ingresos mensuales</h2>
-      <p class="sub">Toca una opción para continuar.</p>
-      <button class="opt" onclick="go(4)"><span class="dot"></span><span>Menos de $1,500</span></button>
-      <button class="opt" onclick="go(4)"><span class="dot"></span><span>$1,500 – $3,000</span></button>
-      <button class="opt" onclick="go(4)"><span class="dot"></span><span>$3,000 – $5,000</span></button>
-      <button class="opt" onclick="go(4)"><span class="dot"></span><span>Más de $5,000</span></button>
+      <span class="eyebrow" data-i18n="q3e">Pregunta 3 de 3</span>
+      <h2 class="q" data-i18n="q3">Estimado de tu nivel de ingresos mensuales</h2>
+      <p class="sub" data-i18n="tap">Toca una opción para continuar.</p>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span data-i18n="q3o1">Menos de $1,500</span></button>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span data-i18n="q3o2">$1,500 – $3,000</span></button>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span data-i18n="q3o3">$3,000 – $5,000</span></button>
+      <button class="opt" onclick="go(4)"><span class="dot"></span><span data-i18n="q3o4">Más de $5,000</span></button>
     </section>
 
     <!-- PANTALLA 4 · Formulario -->
     <section class="screen" id="s4">
-      <span class="eyebrow">Último paso</span>
-      <h2 class="q">¿Dónde te enviamos tus opciones?</h2>
-      <p class="sub">Completa tus datos para ver tus opciones disponibles.</p>
+      <span class="eyebrow" data-i18n="lastStep">Último paso</span>
+      <h2 class="q" data-i18n="formH">¿Dónde te enviamos tus opciones?</h2>
+      <p class="sub" data-i18n="formSub">Completa tus datos para ver tus opciones disponibles.</p>
       <form id="leadForm" onsubmit="submitForm(event)">
         <div class="field">
-          <label for="fullname">Nombre y apellido</label>
-          <input type="text" id="fullname" required placeholder="Ej. Juan Pérez" autocomplete="name">
+          <label for="fullname" data-i18n="fName">Nombre y apellido</label>
+          <input type="text" id="fullname" required placeholder="Ej. Juan Pérez" data-i18n-ph="fNamePh" autocomplete="name">
         </div>
         <div class="field">
-          <label for="email">Correo electrónico</label>
-          <input type="email" id="email" required placeholder="correo@ejemplo.com" autocomplete="email">
+          <label for="email" data-i18n="fEmail">Correo electrónico</label>
+          <input type="email" id="email" required placeholder="correo@ejemplo.com" data-i18n-ph="fEmailPh" autocomplete="email">
         </div>
         <div class="field">
-          <label for="phone">Teléfono móvil (EE. UU.)</label>
+          <label for="phone" data-i18n="fPhone">Teléfono móvil (EE. UU.)</label>
           <input type="tel" id="phone" required placeholder="3051234567" pattern="[0-9]{10}" maxlength="10"
                  inputmode="numeric" title="Ingresa un número válido de 10 dígitos de EE. UU.">
         </div>
         <div class="tcpa">
           <input type="checkbox" id="tcpa" required>
-          <label for="tcpa">Al hacer clic en "Enviar", doy mi consentimiento expreso por escrito para que Fresh Start Finance y sus socios me contacten vía llamada, SMS o email — incluyendo mediante marcado automático o mensajes pregrabados — sobre opciones de préstamos personales. Entiendo que no es requisito para recibir un préstamo y puedo revocar mi consentimiento en cualquier momento.</label>
+          <label for="tcpa" data-i18n="tcpa">Al hacer clic en "Enviar", doy mi consentimiento expreso por escrito para que Fresh Start Finance y sus socios me contacten vía llamada, SMS o email — incluyendo mediante marcado automático o mensajes pregrabados — sobre opciones de préstamos personales. Entiendo que no es requisito para recibir un préstamo y puedo revocar mi consentimiento en cualquier momento.</label>
         </div>
       </form>
     </section>
@@ -199,57 +202,57 @@
     <section class="screen" id="s5">
       <div class="done-hero">
         <div class="check">✓</div>
-        <h2 class="q">¡Solicitud recibida!</h2>
-        <p class="sub">Gracias por tu interés. Mientras preparamos tus opciones, descarga estos recursos gratuitos.</p>
+        <h2 class="q" data-i18n="doneH">¡Solicitud recibida!</h2>
+        <p class="sub" data-i18n="doneP">Gracias por tu interés. Mientras preparamos tus opciones, descarga estos recursos gratuitos.</p>
       </div>
       <div class="dl-card">
-        <h3>Checklist: 10 pasos para mejorar tu puntaje de crédito</h3>
-        <p>PDF gratuito · En español</p>
-        <a class="btn" style="text-decoration:none;display:block;text-align:center" href="lead-magnet-checklist.pdf" download>Descargar mi checklist gratis</a>
+        <h3 data-i18n="dl1t">Checklist: 10 pasos para mejorar tu puntaje de crédito</h3>
+        <p data-i18n="dl1p">PDF gratuito · En español</p>
+        <a class="btn" style="text-decoration:none;display:block;text-align:center" href="lead-magnet-checklist.pdf" download data-i18n="dl1b">Descargar mi checklist gratis</a>
       </div>
       <div class="dl-card bonus">
-        <h3>Calculadora de Deudas — Método Bola de Nieve</h3>
-        <p>Comparte esta página en Facebook para desbloquear tu plantilla de Google Sheets.</p>
+        <h3 data-i18n="dl2t">Calculadora de Deudas — Método Bola de Nieve</h3>
+        <p data-i18n="dl2p">Comparte esta página en Facebook para desbloquear tu plantilla de Google Sheets.</p>
         <a class="btn" style="text-decoration:none;display:block;text-align:center;background:#1877F2"
            href="https://www.facebook.com/sharer/sharer.php?u=https://freshstartfinance-official.github.io/fresh-start-finance-/"
-           target="_blank" rel="noopener" onclick="unlockBonus()">Compartir en Facebook</a>
+           target="_blank" rel="noopener" onclick="unlockBonus()" data-i18n="dl2b">Compartir en Facebook</a>
         <div id="bonusDl" style="display:none;margin-top:12px">
           <a class="btn ghost" style="text-decoration:none;display:block;text-align:center"
              href="https://docs.google.com/spreadsheets/d/1JFYnh2_qKAzZO9hRaCROtxbKNSD7fvhthDip29cSLug/copy"
-             target="_blank" rel="noopener">Abrir calculadora</a>
+             target="_blank" rel="noopener" data-i18n="dl2b2">Abrir calculadora</a>
         </div>
       </div>
       <div class="dl-card">
-        <h3>¿Prefieres hablar con alguien?</h3>
-        <p>Escríbenos por WhatsApp y te orientamos.</p>
+        <h3 data-i18n="dl3t">¿Prefieres hablar con alguien?</h3>
+        <p data-i18n="dl3p">Escríbenos por WhatsApp y te orientamos.</p>
         <a class="btn ghost" style="text-decoration:none;display:block;text-align:center"
            href="https://wa.me/13058482926?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </section>
 
     <!-- Recursos -->
-    <h2 class="section-t">Recursos de educación financiera</h2>
+    <h2 class="section-t" data-i18n="resT">Recursos de educación financiera</h2>
     <div class="rail">
-      <div class="rcard"><h3>3 señales de que tus deudas están consumiendo tu sueldo</h3><p>Aprende a identificar si el pago de intereses está frenando tus metas personales.</p></div>
-      <div class="rcard"><h3>¿Cómo se calcula tu Credit Score?</h3><p>Desglosamos de forma sencilla los 5 factores clave que determinan tu puntaje crediticio.</p></div>
-      <div class="rcard"><h3>Consolidación de Deudas vs. Pago Individual</h3><p>Analizamos pros y contras de agrupar todos tus pagos en una sola cuota mensual.</p></div>
+      <div class="rcard"><h3 data-i18n="r1t">3 señales de que tus deudas están consumiendo tu sueldo</h3><p data-i18n="r1p">Aprende a identificar si el pago de intereses está frenando tus metas personales.</p></div>
+      <div class="rcard"><h3 data-i18n="r2t">¿Cómo se calcula tu Credit Score?</h3><p data-i18n="r2p">Desglosamos de forma sencilla los 5 factores clave que determinan tu puntaje crediticio.</p></div>
+      <div class="rcard"><h3 data-i18n="r3t">Consolidación de Deudas vs. Pago Individual</h3><p data-i18n="r3p">Analizamos pros y contras de agrupar todos tus pagos en una sola cuota mensual.</p></div>
     </div>
 
-    <h2 class="section-t">Sobre Fresh Start Finance</h2>
-    <div class="about">Ofrecemos herramientas interactivas e información objetiva para ayudar a la comunidad hispana en EE. UU. a tomar decisiones financieras más informadas y acceder a mejores alternativas de crédito.</div>
+    <h2 class="section-t" data-i18n="aboutT">Sobre Fresh Start Finance</h2>
+    <div class="about" data-i18n="aboutP">Ofrecemos herramientas interactivas e información objetiva para ayudar a la comunidad hispana en EE. UU. a tomar decisiones financieras más informadas y acceder a mejores alternativas de crédito.</div>
   </main>
 
   <footer>
-    <p>© 2026 Fresh Start Finance · <a href="privacidad.html" style="color:#008170">Política de Privacidad</a></p>
-    <p class="disc"><strong>Aviso legal:</strong> Fresh Start Finance no es un prestamista y no otorga préstamos directamente. No vendemos ni compartimos tus datos con terceros, salvo cuando nos das tu consentimiento expreso en el Quiz de Salud Financiera. Contenido con fines informativos, no constituye asesoría financiera profesional.</p>
+    <p>© 2026 Fresh Start Finance · <a href="privacidad.html" style="color:#008170" data-i18n="priv">Política de Privacidad</a></p>
+    <p class="disc"><strong data-i18n="legalT">Aviso legal:</strong> <span data-i18n="legal">Fresh Start Finance no es un prestamista y no otorga préstamos directamente. No vendemos ni compartimos tus datos con terceros, salvo cuando nos das tu consentimiento expreso en el Quiz de Salud Financiera. Contenido con fines informativos, no constituye asesoría financiera profesional.</span></p>
   </footer>
 
   <!-- CTA fijo contextual -->
   <div class="sticky-cta" id="cta0">
-    <button class="btn" onclick="go(1)">Comenzar el quiz →</button>
+    <button class="btn" onclick="go(1)" data-i18n="ctaStart">Comenzar el quiz →</button>
   </div>
   <div class="sticky-cta" id="cta4" style="display:none">
-    <button class="btn" onclick="document.getElementById('leadForm').requestSubmit()">Ver opciones disponibles</button>
+    <button class="btn" onclick="document.getElementById('leadForm').requestSubmit()" data-i18n="ctaSend">Ver opciones disponibles</button>
   </div>
 
   <a class="wa" href="https://wa.me/13058482926?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Fresh%20Start%20Finance"
@@ -260,13 +263,105 @@
 
 <script>
   let current = 0;
-  const labels = ["","Pregunta 1 de 4","Pregunta 2 de 4","Pregunta 3 de 4","Tus datos","¡Listo!"];
+  let curLang = 'es';
+  try { curLang = localStorage.getItem('fsf-lang') || 'es'; } catch(e){}
+  const I18N = {
+    es: {
+      heroEyebrow:"Quiz de Salud Financiera", heroH1:"Descubre tus opciones en 1 minuto",
+      heroP:"Herramienta educativa interactiva para guiarte en el análisis de tus finanzas personales. Gratis y en español.",
+      t1n:"2 min", t1:"Duración", t2n:"100%", t2:"Gratis", t3n:"ES", t3:"En español",
+      q1e:"Pregunta 1 de 3", q1:"¿Cuál es tu objetivo financiero principal?", tap:"Toca una opción para continuar.",
+      q1o1:"Consolidar deudas", q1o1s:"Junta tus pagos en uno solo",
+      q1o2:"Obtener un préstamo personal", q1o2s:"Evalúa tus alternativas",
+      q1o3:"Mejorar mi historial crediticio", q1o3s:"Sube tu puntaje paso a paso",
+      q1o4:"Educación en presupuestos", q1o4s:"Organiza tus finanzas",
+      q2e:"Pregunta 2 de 3", q2:"¿Cuál es el monto estimado que buscas evaluar?",
+      q2o1:"Menos de $2,000", q2o2:"$2,000 – $5,000", q2o3:"$5,000 – $10,000", q2o4:"Más de $10,000",
+      q3e:"Pregunta 3 de 3", q3:"Estimado de tu nivel de ingresos mensuales",
+      q3o1:"Menos de $1,500", q3o2:"$1,500 – $3,000", q3o3:"$3,000 – $5,000", q3o4:"Más de $5,000",
+      lastStep:"Último paso", formH:"¿Dónde te enviamos tus opciones?", formSub:"Completa tus datos para ver tus opciones disponibles.",
+      fName:"Nombre y apellido", fNamePh:"Ej. Juan Pérez",
+      fEmail:"Correo electrónico", fEmailPh:"correo@ejemplo.com",
+      fPhone:"Teléfono móvil (EE. UU.)",
+      tcpa:"Al hacer clic en \"Enviar\", doy mi consentimiento expreso por escrito para que Fresh Start Finance y sus socios me contacten vía llamada, SMS o email — incluyendo mediante marcado automático o mensajes pregrabados — sobre opciones de préstamos personales. Entiendo que no es requisito para recibir un préstamo y puedo revocar mi consentimiento en cualquier momento.",
+      doneH:"¡Solicitud recibida!", doneP:"Gracias por tu interés. Mientras preparamos tus opciones, descarga estos recursos gratuitos.",
+      dl1t:"Checklist: 10 pasos para mejorar tu puntaje de crédito", dl1p:"PDF gratuito · En español", dl1b:"Descargar mi checklist gratis",
+      dl2t:"Calculadora de Deudas — Método Bola de Nieve", dl2p:"Comparte esta página en Facebook para desbloquear tu plantilla de Google Sheets.",
+      dl2b:"Compartir en Facebook", dl2b2:"Abrir calculadora",
+      dl3t:"¿Prefieres hablar con alguien?", dl3p:"Escríbenos por WhatsApp y te orientamos.",
+      resT:"Recursos de educación financiera",
+      r1t:"3 señales de que tus deudas están consumiendo tu sueldo", r1p:"Aprende a identificar si el pago de intereses está frenando tus metas personales.",
+      r2t:"¿Cómo se calcula tu Credit Score?", r2p:"Desglosamos de forma sencilla los 5 factores clave que determinan tu puntaje crediticio.",
+      r3t:"Consolidación de Deudas vs. Pago Individual", r3p:"Analizamos pros y contras de agrupar todos tus pagos en una sola cuota mensual.",
+      aboutT:"Sobre Fresh Start Finance",
+      aboutP:"Ofrecemos herramientas interactivas e información objetiva para ayudar a la comunidad hispana en EE. UU. a tomar decisiones financieras más informadas y acceder a mejores alternativas de crédito.",
+      legalT:"Aviso legal:",
+      legal:"Fresh Start Finance no es un prestamista y no otorga préstamos directamente. No vendemos ni compartimos tus datos con terceros, salvo cuando nos das tu consentimiento expreso en el Quiz de Salud Financiera. Contenido con fines informativos, no constituye asesoría financiera profesional.",
+      priv:"Política de Privacidad",
+      ctaStart:"Comenzar el quiz →", ctaSend:"Ver opciones disponibles"
+    },
+    en: {
+      heroEyebrow:"Financial Health Quiz", heroH1:"Discover your options in 1 minute",
+      heroP:"Interactive educational tool to guide you through your personal finances. Free and in English.",
+      t1n:"2 min", t1:"Duration", t2n:"100%", t2:"Free", t3n:"EN", t3:"In English",
+      q1e:"Question 1 of 3", q1:"What is your main financial goal?", tap:"Tap an option to continue.",
+      q1o1:"Consolidate debt", q1o1s:"Combine your payments into one",
+      q1o2:"Get a personal loan", q1o2s:"Evaluate your alternatives",
+      q1o3:"Improve my credit history", q1o3s:"Raise your score step by step",
+      q1o4:"Budgeting education", q1o4s:"Organize your finances",
+      q2e:"Question 2 of 3", q2:"What is the estimated amount you want to evaluate?",
+      q2o1:"Less than $2,000", q2o2:"$2,000 – $5,000", q2o3:"$5,000 – $10,000", q2o4:"More than $10,000",
+      q3e:"Question 3 of 3", q3:"Estimated monthly income level",
+      q3o1:"Less than $1,500", q3o2:"$1,500 – $3,000", q3o3:"$3,000 – $5,000", q3o4:"More than $5,000",
+      lastStep:"Last step", formH:"Where should we send your options?", formSub:"Complete your details to see your available options.",
+      fName:"Full name", fNamePh:"E.g. John Smith",
+      fEmail:"Email", fEmailPh:"email@example.com",
+      fPhone:"Mobile phone (U.S.)",
+      tcpa:"By clicking \"Submit\", I give my express written consent for Fresh Start Finance and its partners to contact me by call, SMS, or email — including via automatic dialing or prerecorded messages — about personal loan options. I understand this is not a requirement to receive a loan and I may revoke my consent at any time.",
+      doneH:"Request received!", doneP:"Thanks for your interest. While we prepare your options, download these free resources.",
+      dl1t:"Checklist: 10 steps to improve your credit score", dl1p:"Free PDF · In English", dl1b:"Download my free checklist",
+      dl2t:"Debt Calculator — Snowball Method", dl2p:"Share this page on Facebook to unlock your Google Sheets template.",
+      dl2b:"Share on Facebook", dl2b2:"Open calculator",
+      dl3t:"Prefer to talk to someone?", dl3p:"Message us on WhatsApp and we'll guide you.",
+      resT:"Financial education resources",
+      r1t:"3 signs your debt is eating your paycheck", r1p:"Learn to spot whether interest payments are holding back your personal goals.",
+      r2t:"How is your Credit Score calculated?", r2p:"We break down the 5 key factors that determine your credit score, simply explained.",
+      r3t:"Debt Consolidation vs. Individual Payments", r3p:"We analyze the pros and cons of combining all your payments into a single monthly payment.",
+      aboutT:"About Fresh Start Finance",
+      aboutP:"We offer interactive tools and objective information to help the Hispanic community in the U.S. make more informed financial decisions and access better credit alternatives.",
+      legalT:"Legal notice:",
+      legal:"Fresh Start Finance is not a lender and does not directly issue loans. We do not sell or share your data with third parties, except when you give us your express consent in the Financial Health Quiz. Content for informational purposes; it does not constitute professional financial advice.",
+      priv:"Privacy Policy",
+      ctaStart:"Start the quiz →", ctaSend:"See available options"
+    }
+  };
+  const stepLabels = {
+    es:["","Pregunta 1 de 4","Pregunta 2 de 4","Pregunta 3 de 4","Tus datos","¡Listo!"],
+    en:["","Question 1 of 4","Question 2 of 4","Question 3 of 4","Your details","Done!"]
+  };
+  function setLang(l){
+    curLang = l;
+    try{ localStorage.setItem('fsf-lang', l); }catch(e){}
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const v = I18N[l][el.getAttribute('data-i18n')];
+      if(v !== undefined) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+      const v = I18N[l][el.getAttribute('data-i18n-ph')];
+      if(v !== undefined) el.placeholder = v;
+    });
+    document.getElementById('langBtn').textContent = (l === 'es') ? 'EN' : 'ES';
+    document.getElementById('backBtn').setAttribute('aria-label', (l === 'es') ? 'Atrás' : 'Back');
+    document.getElementById('plabel').textContent = stepLabels[l][current] || '';
+  }
+  function toggleLang(){ setLang(curLang === 'es' ? 'en' : 'es'); }
   function go(n){
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     document.getElementById('s'+n).classList.add('active');
     current = n;
     document.getElementById('pbar').style.width = Math.min(100,(n/5)*100) + '%';
-    document.getElementById('plabel').textContent = labels[n] || '';
+    document.getElementById('plabel').textContent = stepLabels[curLang][n] || '';
     document.getElementById('backBtn').classList.toggle('show', n>0 && n<5);
     document.getElementById('cta0').style.display = n===0 ? 'block':'none';
     document.getElementById('cta4').style.display = n===4 ? 'block':'none';
@@ -275,6 +370,7 @@
   function goBack(){ if(current>0) go(current-1); }
   function submitForm(e){ e.preventDefault(); go(5); }
   function unlockBonus(){ setTimeout(()=>{document.getElementById('bonusDl').style.display='block';},1200); }
+  setLang(curLang);
 </script>
 </body>
 </html>
